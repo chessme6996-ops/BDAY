@@ -42,7 +42,8 @@ const Index = () => {
   const [showQr, setShowQr] = useState(false);
 
   const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&cu=INR&tn=${encodeURIComponent(GIFT_NOTE)}&mode=02&purpose=00`;
-  const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(PAYMENT_URL)}&margin=10&ecc=H`;
+  // Change this line in your Index component
+  const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(`upi://pay?pa=${YOUR_UPI_ID}&pn=${YOUR_NAME}&am=${GIFT_AMOUNT}&cu=INR&mode=02&orgid=000000&sign=v0`)}&margin=10&ecc=M`;
 
   const closeModal = () => {
     setActiveModal(null);
