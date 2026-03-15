@@ -41,7 +41,7 @@ const Index = () => {
   const [activeModal, setActiveModal] = useState<"when" | "map" | "dress" | "gift" | null>(null);
   const [showQr, setShowQr] = useState(false);
 
-  const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&cu=INR&tn=${encodeURIComponent(GIFT_NOTE)}`;
+  const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&cu=INR&tn=${encodeURIComponent(GIFT_NOTE)}&mode=02&purpose=00`;
   const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(PAYMENT_URL)}&margin=10&ecc=H`;
 
   const closeModal = () => {
