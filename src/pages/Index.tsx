@@ -6,7 +6,6 @@ import Countdown from "@/components/Countdown";
 import CameraBackground from "@/components/CameraBackground";
 import MouseParticles from "@/components/MouseParticles";
 
-
 const BIRTHDAY_DATE = new Date("2026-04-15T18:00:00");
 const YOUR_UPI_ID = "7880958890@ibl";
 const YOUR_NAME = "Patty";
@@ -14,6 +13,9 @@ const GIFT_AMOUNT = "501";
 const GIFT_NOTE = "Birthday Gift for Patty";
 const MAP_URL = "https://maps.app.goo.gl/em7xYfV7xEigoa5B8";
 
+// Updated for clickable functionality
+const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&cu=INR&mode=02&purpose=00&orgid=159765`;
+const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(PAYMENT_URL)}&margin=10&ecc=H`;
 
 const WHEN_IMAGE = "/my-birthday-photo.jpg";
 const DRESS_CODE_IMAGE = "/dress-code.jpg";
@@ -41,10 +43,6 @@ const Index = () => {
   const [activeModal, setActiveModal] = useState<"when" | "map" | "dress" | "gift" | null>(null);
   const [showQr, setShowQr] = useState(false);
 
-  const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&cu=INR&tn=${encodeURIComponent(GIFT_NOTE)}&mode=02&purpose=00`;
-  // Change this line in your Index component
-  const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(`upi://pay?pa=${YOUR_UPI_ID}&pn=${YOUR_NAME}&am=${GIFT_AMOUNT}&cu=INR&mode=02&orgid=000000&sign=v0`)}&margin=10&ecc=M`;
-
   const closeModal = () => {
     setActiveModal(null);
     setShowQr(false);
@@ -56,7 +54,6 @@ const Index = () => {
       <MouseParticles />
       <Confetti />
 
-      
       <section className="relative min-h-[45dvh] flex flex-col items-center justify-center px-4 pt-16 pb-8 text-center">
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
           <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-foreground leading-tight mb-4 px-2">
@@ -66,7 +63,6 @@ const Index = () => {
         </motion.div>
       </section>
 
-      
       <section className="py-8 sm:py-12 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-8">MONIIII KA <span className="text-primary">BDAAYYYY</span></h2>
@@ -78,7 +74,6 @@ const Index = () => {
         </div>
       </section>
 
-      
       <section className="py-12 sm:py-20 px-4 bg-muted/50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-12">What I(Nannhii jan) <span className="text-secondary">WANT !!</span></h2>
@@ -94,7 +89,6 @@ const Index = () => {
         </div>
       </section>
 
-      
       <section className="py-12 sm:py-20 px-4">
         <div className="max-w-md mx-auto text-center">
           <motion.div whileHover={{ scale: 1.02 }} onClick={() => setActiveModal("gift")} className="cursor-pointer bg-card rounded-[2.5rem] p-10 border-2 border-dashed border-primary/30 shadow-2xl relative overflow-hidden group">
@@ -106,7 +100,6 @@ const Index = () => {
         </div>
       </section>
 
-      
       <AnimatePresence>
         {activeModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -117,9 +110,20 @@ const Index = () => {
               {activeModal === "when" && (
                 <div className="flex flex-col"><img src={WHEN_IMAGE} className="h-80 w-full object-cover" /><div className="p-6 text-center"><h2>Save the Date!</h2><p>April 15, 2026</p></div></div>
               )}
+              
               {activeModal === "map" && (
-                <div className="p-8 text-center"><Heart className="w-8 h-8 mx-auto text-pink-500 mb-2 fill-current" /><h2>First CLICK!! then SCAN</h2><div className="bg-white p-3 rounded-2xl inline-block mb-6 shadow-lg border border-muted"><img src={paymentQrCode} className="w-40 h-40" /></div><a href={MAP_URL} target="_blank" className="flex items-center justify-center gap-3 w-full py-4 bg-primary text-white rounded-2xl font-bold">Google Maps</a></div>
+                <div className="p-8 text-center">
+                  <Heart className="w-8 h-8 mx-auto text-pink-500 mb-2 fill-current" />
+                  <h2>First CLICK!! then SCAN</h2>
+                  <a href={PAYMENT_URL} className="block active:scale-95 transition-transform">
+                    <div className="bg-white p-3 rounded-2xl inline-block mb-6 shadow-lg border border-muted">
+                      <img src={paymentQrCode} className="w-40 h-40" />
+                    </div>
+                  </a>
+                  <a href={MAP_URL} target="_blank" className="flex items-center justify-center gap-3 w-full py-4 bg-primary text-white rounded-2xl font-bold shadow-lg">Google Maps</a>
+                </div>
               )}
+
               {activeModal === "dress" && (
                 <div className="flex flex-col"><img src={DRESS_CODE_IMAGE} className="h-80 w-full object-cover" /><div className="p-6 text-center"><h2>Dress Code</h2><p>SMARRT BOYYY..</p></div></div>
               )}
@@ -127,13 +131,7 @@ const Index = () => {
               {activeModal === "gift" && (
                 <div className="flex flex-col">
                   <div className="h-64 w-full bg-black overflow-hidden relative">
-                    <video 
-                      id="surpriseVideo"
-                      src={SURPRISE_VIDEO}
-                      autoPlay 
-                      playsInline
-                      className="w-full h-full object-cover"
-                    >
+                    <video id="surpriseVideo" src={SURPRISE_VIDEO} autoPlay playsInline className="w-full h-full object-cover">
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -157,13 +155,22 @@ const Index = () => {
                     ) : (
                       <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
                         <Heart className="w-8 h-8 mx-auto text-pink-500 mb-4 fill-current animate-bounce" />
-                        <h2 className="font-display text-2xl font-bold mb-2">This time Gift hai PAKAA [SCAN PLIS] !</h2>
-                        <div className="bg-white p-3 rounded-2xl inline-block mb-6 shadow-lg border-4 border-primary/10 mt-4">
-                          <img src={paymentQrCode} alt="UPI QR" className="w-44 h-44" />
-                          <div className="mt-2 text-[10px] font-bold text-slate-400 uppercase tracking-tighter"></div>
+                        <h2 className="font-display text-2xl font-bold mb-2">Gift hai PAKAA!</h2>
+                        <a href={PAYMENT_URL} className="block active:scale-95 transition-transform">
+                          <div className="bg-white p-3 rounded-2xl inline-block mb-4 shadow-lg border-4 border-primary/10 mt-4">
+                            <img src={paymentQrCode} alt="UPI QR" className="w-44 h-44" />
+                            <div className="mt-2 py-1 px-2 bg-primary/10 rounded-md">
+                              <p className="text-[10px] font-bold text-primary">TAP TO PAY DIRECTLY</p>
+                            </div>
+                          </div>
+                        </a>
+                        <div className="flex flex-col gap-2 px-4">
+                          <p className="text-[10px] text-muted-foreground italic font-medium">Scan with GPay/PhonePe or Tap the QR</p>
+                          <button onClick={() => { navigator.clipboard.writeText(YOUR_UPI_ID); alert("UPI ID Copied!"); }} className="text-[10px] bg-muted py-2 rounded-lg font-mono text-muted-foreground border border-dashed border-primary/20">
+                            ID: {YOUR_UPI_ID} (Copy)
+                          </button>
+                          <button onClick={() => setShowQr(false)} className="mt-4 text-xs text-primary underline">Back to Video</button>
                         </div>
-                        <p className="text-[10px] text-muted-foreground italic font-medium"></p>
-                        <button onClick={() => setShowQr(false)} className="mt-4 text-xs text-primary underline">Back to Video</button>
                       </motion.div>
                     )}
                   </div>
