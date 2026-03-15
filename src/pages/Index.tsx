@@ -160,14 +160,14 @@ const Index = () => {
                           <div className="bg-white p-3 rounded-2xl inline-block mb-4 shadow-lg border-4 border-primary/10 mt-4">
                             <img src={paymentQrCode} alt="UPI QR" className="w-44 h-44" />
                             <div className="mt-2 py-1 px-2 bg-primary/10 rounded-md">
-                              <p className="text-[10px] font-bold text-primary">TAP TO PAY DIRECTLY</p>
+                              
                             </div>
                           </div>
                         </a>
                         <div className="flex flex-col gap-2 px-4">
-                          <p className="text-[10px] text-muted-foreground italic font-medium">Scan with GPay/PhonePe or Tap the QR</p>
-                          <button onClick={() => { navigator.clipboard.writeText(YOUR_UPI_ID); alert("UPI ID Copied!"); }} className="text-[10px] bg-muted py-2 rounded-lg font-mono text-muted-foreground border border-dashed border-primary/20">
-                            ID: {YOUR_UPI_ID} (Copy)
+                          <p className="text-[10px] text-muted-foreground italic font-medium"></p>
+                         
+  
                           </button>
                           <button onClick={() => setShowQr(false)} className="mt-4 text-xs text-primary underline">Back to Video</button>
                         </div>
