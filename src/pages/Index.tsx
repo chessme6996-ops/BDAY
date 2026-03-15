@@ -41,8 +41,8 @@ const Index = () => {
   const [activeModal, setActiveModal] = useState<"when" | "map" | "dress" | "gift" | null>(null);
   const [showQr, setShowQr] = useState(false);
 
-  const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&tn=${encodeURIComponent(GIFT_NOTE)}&cu=INR`;
-  const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(PAYMENT_URL)}&margin=10`;
+  const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&cu=INR&tn=${encodeURIComponent(GIFT_NOTE)}`;
+  const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(PAYMENT_URL)}&margin=10&ecc=H`;
 
   const closeModal = () => {
     setActiveModal(null);
@@ -56,7 +56,7 @@ const Index = () => {
       <Confetti />
 
       
-      <section className="relative min-h-[70dvh] flex flex-col items-center justify-center px-4 pt-16 pb-8 text-center">
+      <section className="relative min-h-[45dvh] flex flex-col items-center justify-center px-4 pt-16 pb-8 text-center">
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
           <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-foreground leading-tight mb-4 px-2">
             Happy.. Birthdayyy<br />
