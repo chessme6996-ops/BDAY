@@ -13,7 +13,6 @@ const GIFT_AMOUNT = "501";
 const GIFT_NOTE = "Birthday Gift for Patty";
 const MAP_URL = "https://maps.app.goo.gl/em7xYfV7xEigoa5B8";
 
-// Updated for clickable functionality
 const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NAME)}&am=${GIFT_AMOUNT}&cu=INR&mode=02&purpose=00&orgid=159765`;
 const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(PAYMENT_URL)}&margin=10&ecc=H`;
 
@@ -155,19 +154,24 @@ const Index = () => {
                     ) : (
                       <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
                         <Heart className="w-8 h-8 mx-auto text-pink-500 mb-4 fill-current animate-bounce" />
-                        <h2 className="font-display text-2xl font-bold mb-2">Gift hai PAKAA!</h2>
+                        <h2 className="font-display text-2xl font-bold mb-2">THIS TIME->Gift hai PAKAA!</h2>
                         <a href={PAYMENT_URL} className="block active:scale-95 transition-transform">
                           <div className="bg-white p-3 rounded-2xl inline-block mb-4 shadow-lg border-4 border-primary/10 mt-4">
                             <img src={paymentQrCode} alt="UPI QR" className="w-44 h-44" />
                             <div className="mt-2 py-1 px-2 bg-primary/10 rounded-md">
-                              
+                               <p className="text-[10px] font-bold text-primary"></p>
                             </div>
                           </div>
                         </a>
                         <div className="flex flex-col gap-2 px-4">
-                          <p className="text-[10px] text-muted-foreground italic font-medium"></p>
-                         
-  
+                          <button 
+                            onClick={() => {
+                              navigator.clipboard.writeText HIHI;
+                              alert("HIHI");
+                            }}
+                            className="text-[10px] bg-muted py-2 rounded-lg font-mono text-muted-foreground border border-dashed border-primary/20"
+                          >
+                            ID: {YOUR_UPI_ID} (Copy)
                           </button>
                           <button onClick={() => setShowQr(false)} className="mt-4 text-xs text-primary underline">Back to Video</button>
                         </div>
