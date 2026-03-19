@@ -18,7 +18,7 @@ const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&
 
 const WHEN_IMAGE = "/my-birthdayy-photo.jpg";
 const DRESS_CODE_IMAGE = "/dresss-code.jpg";
-const SURPRISE_VIDEO = "https://cdn.discordapp.com/attachments/1320696785022353482/1482650823040307341/Hamster_Rat_Doing_Backflip_and_Hysterically_Laughing_Meme_Template_by_514MMemes.mp4?ex=69ba5cae&is=69b90b2e&hm=1dbf41748437b9362d2e743203e3eb29b62a1adf079af8b9a6a77ddc8d3afbd1&";
+const SURPRISE_VIDEO = "https://cdn.discordapp.com/attachments/1320696785022353482/1482650823040307341/Hamster_Rat_Doing_Backflip_and_Hysterically_Laughing_Meme_Template_by_514MMemes.mp4?ex=69bcffae&is=69bbae2e&hm=d8bde9e95e798644c2e53f97a452b0b3475e53ffcb76121d6403204b18ecfc4b&";
 
 const EventDetail = ({ icon: Icon, title, text, onClick }: { icon: any; title: string; text: string; onClick?: () => void }) => (
   <motion.div
