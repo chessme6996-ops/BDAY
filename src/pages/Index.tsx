@@ -64,9 +64,9 @@ const Index = () => {
 
       <section className="py-8 sm:py-12 px-4">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-8">MONIIII KA <span className="text-primary">BDAAYYYY</span></h2>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-8">SANKALP KA <span className="text-primary">BDAAYYYY</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <EventDetail icon={Clock} title="When" text="April 15, 2026" onClick={() => setActiveModal("when")} />
+            <EventDetail icon={Clock} title="When" text="April 20, 2026" onClick={() => setActiveModal("when")} />
             <EventDetail icon={MapPin} title="Where" text="CLICKK PLISS.." onClick={() => setActiveModal("map")} />
             <EventDetail icon={Gift} title="Dress Code" text="SUNDAR SMART !" onClick={() => setActiveModal("dress")} />
           </div>
@@ -77,7 +77,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-12">What I(Nannhii jan) <span className="text-secondary">WANT !!</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {[{ icon: Shirt, title: "KAAPEEEEE...", desc: "SUNDAR SHIRT PANT PLIS GAREEB HU" }, { icon: Cake, title: "Delicious Cake", desc: "A stunning custom cake!" }, { icon: Utensils, title: "CHIIZZIII", desc: "KFC large bucket chicken" }].map((item, i) => (
+            {[{ icon: Shirt, title: "KAPDAA", desc: "LELE" }, { icon: Cake, title: "Delicious Cake", desc: "A stunning custom cake!" }, { icon: Utensils, title: "KHANA", desc: "OLD AL BAIK" }].map((item, i) => (
               <div key={item.title} className="flex flex-col items-center">
                 <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-4"><item.icon className="text-primary w-10 h-10" /></div>
                 <h3 className="font-bold">{item.title}</h3>
