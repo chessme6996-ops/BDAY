@@ -17,7 +17,7 @@ const PAYMENT_URL = `upi://pay?pa=${YOUR_UPI_ID}&pn=${encodeURIComponent(YOUR_NA
 const paymentQrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(PAYMENT_URL)}&margin=10&ecc=H`;
 
 const WHEN_IMAGE = "/my-birthday-photo.jpg";
-const DRESS_CODE_IMAGE = "/dress-code.jpg";
+const DRESS_CODE_IMAGE = "/dresss-code.jpg";
 const SURPRISE_VIDEO = "https://cdn.discordapp.com/attachments/1320696785022353482/1482650823040307341/Hamster_Rat_Doing_Backflip_and_Hysterically_Laughing_Meme_Template_by_514MMemes.mp4?ex=69ba5cae&is=69b90b2e&hm=1dbf41748437b9362d2e743203e3eb29b62a1adf079af8b9a6a77ddc8d3afbd1&";
 
 const EventDetail = ({ icon: Icon, title, text, onClick }: { icon: any; title: string; text: string; onClick?: () => void }) => (
