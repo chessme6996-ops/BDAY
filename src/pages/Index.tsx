@@ -107,7 +107,7 @@ const Index = () => {
               <button onClick={closeModal} className="absolute top-4 right-4 p-2 rounded-full bg-black/20 text-white z-10"><X className="w-5 h-5" /></button>
 
               {activeModal === "when" && (
-                <div className="flex flex-col"><img src={WHEN_IMAGE} className="h-80 w-full object-cover" /><div className="p-6 text-center"><h2>Save the Date!</h2><p>April 15, 2026</p></div></div>
+                <div className="flex flex-col"><img src={WHEN_IMAGE} className="h-80 w-full object-cover" /><div className="p-6 text-center"><h2>Save the Date!</h2><p>April 20, 2026</p></div></div>
               )}
               
               {activeModal === "map" && (
